@@ -1,0 +1,9 @@
+/node_modules/
+/.vscode/
+/__pycache__/
+/backend/__pycache__/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+/backend/ia/variables/variables.data-00000-of-00001

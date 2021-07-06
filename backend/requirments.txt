@@ -1,0 +1,12 @@
+opencv-python
+numpy
+matplotlib
+colorthief
+firebase_admin
+sqlalchemy
+flask
+flask_cors
+pillow
+tensorflow
+keras
+imutils
