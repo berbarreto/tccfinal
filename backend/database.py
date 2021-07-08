@@ -109,6 +109,7 @@ class Result(Base):
     tag = sqlalchemy.Column(sqlalchemy.String(length=500))
 
     user = relationship(User, backref='user')
+    doctor = relationship(Doctor, backref='doctor')
     analysis = relationship(Analyze, backref='analysis', lazy='joined')
 
     @property
@@ -124,4 +125,5 @@ class Result(Base):
             'feedback': self.feedback,
             'tag': self.tag,
             'user': self.user.serialize,
+            'doctor': self.doctor.serialize,
         }

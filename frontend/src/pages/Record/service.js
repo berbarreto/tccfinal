@@ -7,7 +7,7 @@ export function getRecord(id, fn, fn2, fn3) {
     }
   }
 
-  fetch(`http://localhost:5000/getResultById/${id}`, opts)
+  fetch(`http://192.168.100.114:5000/getResultById/${id}`, opts)
   .then(function (response) {
     if (response.status !== 200) {
       alert("Login Incorreto")
@@ -34,7 +34,7 @@ export function updateRecord(body, callback) {
     body: JSON.stringify(body)
   }
 
-  fetch(`http://localhost:5000/updateResult/`, opts)
+  fetch(`http://192.168.100.114:5000/updateResult/`, opts)
   .then(function (response) {
     if (response.status !== 200) {
       alert("Login Incorreto")

@@ -6,7 +6,7 @@ from sqlalchemy import desc
 from sqlalchemy.orm import joinedload
 import uuid
 
-from database import Result, User, Analyze
+from database import Result, User, Analyze, Doctor
 from detection.borderDetection import border_detection
 from detection.colorDetection import color_detection
 from detection.cropImage import crop_center
@@ -107,7 +107,7 @@ def get_results_by_user(session, user):
 
     results = session.query(Result) \
         .filter_by(user_id=user.id) \
-        .join(User) \
+        .join(User, Doctor) \
         .options(joinedload(Result.analysis)) \
         .order_by(desc(Result.id)) \
         .all()
@@ -121,7 +121,7 @@ def get_results_by_doctor(session, doctor):
 
     results = session.query(Result) \
         .filter_by(doctor_id=doctor.id) \
-        .join(User) \
+        .join(User, Doctor) \
         .options(joinedload(Result.analysis)) \
         .order_by(desc(Result.id)) \
         .all()
@@ -130,6 +130,10 @@ def get_results_by_doctor(session, doctor):
 
 
 def get_result_by_id(session, id):
-    result = session.query(Result).filter_by(id=id).join(User).options(joinedload(Result.analysis)).first()
+    result = session.query(Result) \
+        .filter_by(id=id) \
+        .join(User, Doctor) \
+        .options(joinedload(Result.analysis)) \
+        .first()
 
     return {'message': "Got results", 'success': True, 'data': to_json(result)}

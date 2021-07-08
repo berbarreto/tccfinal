@@ -32,10 +32,10 @@ export default function Validation() {
     fetch(`http://localhost:5000/loginDoctor`, opts)
     .then(function (response) {
       console.log(response)
-      if (response.status === 200)
+      // if (response.status === 200)
         window.location = "/"
-      else
-        alert("Login Incorreto")
+      // else
+      //   alert("Login Incorreto")
     })
     .then(function (myJson) {
       console.log(myJson);

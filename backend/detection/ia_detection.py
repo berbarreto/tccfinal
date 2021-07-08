@@ -24,7 +24,7 @@ def ia_detection(tst_src):
     # model.p
     prediction = model.predict(test_melanoma_img_batch, verbose=0)
     print(prediction)
-    percentage = 100 - (prediction[0][0] * 100)
+    percentage = (prediction[0][0] * 100)
     print("Melanoma?: {:.2f}%".format(percentage))
     return percentage
 
